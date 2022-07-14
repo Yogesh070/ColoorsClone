@@ -1,11 +1,12 @@
-import {React,useState} from 'react'
+import {React,useState,useContext,useCallback} from 'react'
 import './App.css'
 import {MdClose} from 'react-icons/md'
 import {FiCopy,FiLock,FiStar} from 'react-icons/fi'
 import {BsGrid} from 'react-icons/bs'
+import { ColorContext } from './App'
 
-
-function ColorPalette({color,i}) {
+function ColorPalette({color,i,onPaletteChange}) {
+    const colors=useContext(ColorContext);
     const [isShown, setIsShown] = useState(false);
     const [showShades, setshowShades] = useState(false);
     const actions=[
@@ -16,21 +17,31 @@ function ColorPalette({color,i}) {
         {icon:<FiLock size={24}/>,tooltipText:"Lock Color"}
     ];
     function copyToClipBoard() {
-        navigator.clipboard.writeText('hi');
+        navigator.clipboard.writeText("#"+color);
     }
     function toggleShades() {
         setshowShades(prev=>!prev);
     }
+    const removeColor=useCallback(
+        (idx) => {
+           let arr= colors.splice(idx,1,Math.floor(Math.random()*14468846).toString(16));
+            onPaletteChange(colors) ;
+            console.log(colors);  
+            console.log("Removed color "+arr);
+        },
+        [colors,onPaletteChange],
+    )
+
     function performAction(i) {
         switch (i) {
             case 0:
                 console.log('remove color');
+                removeColor(i);
                 break;
             case 1:
                 toggleShades();
                 break;
             case 2:
-                console.log('copy');
                 copyToClipBoard();
                 break;
             case 3:

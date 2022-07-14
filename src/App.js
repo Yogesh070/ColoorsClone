@@ -1,7 +1,8 @@
-import {React,useState,useEffect} from 'react'
+import {React,useState,useEffect,createContext} from 'react'
 import ColorPalette from './ColorPalette';
 import './App.css'
 
+export const ColorContext= createContext([]);
 function App() {
     const [colorPalette, setColorPalette] = useState([]);
     useEffect(() => {
@@ -25,10 +26,13 @@ function App() {
         }
         setColorPalette(tempArr);
     }
+
     return (
+      <ColorContext.Provider value={colorPalette}>
         <div className="main">
-        {colorPalette.map((color,index)=><ColorPalette color={color} key={index} i={index}/>)}
+        {colorPalette.map((color,index)=><ColorPalette color={color} key={index} i={index} onPaletteChange={setColorPalette}/>)}
         </div>
+      </ColorContext.Provider>
     )
 }
 
