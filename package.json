@@ -1,7 +1,7 @@
 {
   "name": "coolorsclone",
   "version": "0.1.0",
-  "homepage": "https://github.com/Yogesh070/ColoorsClone",
+  "homepage": "https://yogesh070.github.io/ColoorsClone",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
