@@ -3,9 +3,9 @@ import './App.css'
 import { MdClose } from 'react-icons/md'
 import { FiCopy, FiLock, FiStar } from 'react-icons/fi'
 import { BsGrid } from 'react-icons/bs'
+import ColorPaletteChild from './components/ColorPaletteChild'
 
-
-function ColorPalette({ color, i }) {
+function ColorPalette({ color,removeSingleColorFromPalette,index }) {
     const [isShown, setIsShown] = useState(false);
     const [showShades, setshowShades] = useState(false);
     const actions = [
@@ -15,8 +15,9 @@ function ColorPalette({ color, i }) {
         { icon: <FiStar size={24} />, tooltipText: "Add to Favourite" },
         { icon: <FiLock size={24} />, tooltipText: "Lock Color" }
     ];
-    function copyToClipBoard() {
-        navigator.clipboard.writeText('hi');
+
+    function copyToClipBoard(text) {
+        navigator.clipboard.writeText("#"+text);
     }
     function toggleShades() {
         setshowShades(prev => !prev);
@@ -24,14 +25,13 @@ function ColorPalette({ color, i }) {
     function performAction(i) {
         switch (i) {
             case 0:
-                console.log('remove color');
+                removeSingleColorFromPalette(index);
                 break;
             case 1:
                 toggleShades();
                 break;
             case 2:
-                console.log('copy');
-                copyToClipBoard();
+                copyToClipBoard(color);
                 break;
             case 3:
                 console.log('Add to fav');
@@ -43,13 +43,6 @@ function ColorPalette({ color, i }) {
                 break;
         }
     }
-    function ColorPaletteChild({ color }) {
-        let arr = [];
-        for (let i = 0; i < 20; i++) {
-            arr.push(<div className="palette-child" style={{ backgroundColor: `#${color}`, opacity: i * 0.06, display: `${showShades ? "block" : "none"}` }} key={i}></div>);
-        }
-        return arr
-    }
     return (
         <div className="palette" style={{ backgroundColor: `${!showShades ? `#${color}` : "transparent"}` }} onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}>
@@ -59,7 +52,7 @@ function ColorPalette({ color, i }) {
                 </ul>
             </div>)
             }
-            <ColorPaletteChild color={color} />
+            <ColorPaletteChild color={color} showShades={showShades}/>
             <h2>{color.toUpperCase()}</h2>
         </div>
     )
