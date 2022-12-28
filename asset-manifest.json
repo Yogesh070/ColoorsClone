@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Yogesh070/ColoorsClone/static/css/main.e01f8ec8.css",
+    "main.js": "/Yogesh070/ColoorsClone/static/js/main.299f6feb.js",
+    "index.html": "/Yogesh070/ColoorsClone/index.html",
+    "main.e01f8ec8.css.map": "/Yogesh070/ColoorsClone/static/css/main.e01f8ec8.css.map",
+    "main.299f6feb.js.map": "/Yogesh070/ColoorsClone/static/js/main.299f6feb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e01f8ec8.css",
+    "static/js/main.299f6feb.js"
+  ]
+}
