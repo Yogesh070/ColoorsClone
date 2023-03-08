@@ -4,20 +4,28 @@ import { MdClose } from 'react-icons/md'
 import { FiCopy, FiLock, FiStar } from 'react-icons/fi'
 import { BsGrid } from 'react-icons/bs'
 import ColorPaletteChild from './components/ColorPaletteChild'
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
-function ColorPalette({ color,removeSingleColorFromPalette,index }) {
+function ColorPalette({ color, removeSingleColorFromPalette, index }) {
     const [isShown, setIsShown] = useState(false);
     const [showShades, setshowShades] = useState(false);
     const actions = [
         { icon: <MdClose size={28} />, tooltipText: "Remove Color" },
         { icon: <BsGrid size={24} />, tooltipText: "Show Shades" },
         { icon: <FiCopy size={24} />, tooltipText: "Copy HEX" },
-        { icon: <FiStar size={24} />, tooltipText: "Add to Favourite" },
-        { icon: <FiLock size={24} />, tooltipText: "Lock Color" }
+        // { icon: <FiStar size={24} />, tooltipText: "Add to Favourite" },
+        { icon: <FiLock size={24} />, tooltipText: "Lock Color" },
+        { icon: <FiStar size={24} />, tooltipText: "Create Shades" }
     ];
 
     function copyToClipBoard(text) {
-        navigator.clipboard.writeText("#"+text);
+        navigator.clipboard.writeText("#" + text);
+        toast(`Copied #${text}`, {
+            autoClose: 800,
+            type: toast.TYPE.SUCCESS,
+            hideProgressBar: true,
+        });
     }
     function toggleShades() {
         setshowShades(prev => !prev);
@@ -52,8 +60,9 @@ function ColorPalette({ color,removeSingleColorFromPalette,index }) {
                 </ul>
             </div>)
             }
-            <ColorPaletteChild color={color} showShades={showShades}/>
+            <ColorPaletteChild color={color} showShades={showShades} />
             <h2>{color.toUpperCase()}</h2>
+            <ToastContainer />
         </div>
     )
 }
