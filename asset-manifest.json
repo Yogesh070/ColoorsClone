@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ColoorsClone/static/css/main.e01f8ec8.css",
-    "main.js": "/ColoorsClone/static/js/main.299f6feb.js",
+    "main.css": "/ColoorsClone/static/css/main.2610e8a9.css",
+    "main.js": "/ColoorsClone/static/js/main.50915a7b.js",
     "index.html": "/ColoorsClone/index.html",
-    "main.e01f8ec8.css.map": "/ColoorsClone/static/css/main.e01f8ec8.css.map",
-    "main.299f6feb.js.map": "/ColoorsClone/static/js/main.299f6feb.js.map"
+    "main.2610e8a9.css.map": "/ColoorsClone/static/css/main.2610e8a9.css.map",
+    "main.50915a7b.js.map": "/ColoorsClone/static/js/main.50915a7b.js.map"
   },
   "entrypoints": [
-    "static/css/main.e01f8ec8.css",
-    "static/js/main.299f6feb.js"
+    "static/css/main.2610e8a9.css",
+    "static/js/main.50915a7b.js"
   ]
 }
